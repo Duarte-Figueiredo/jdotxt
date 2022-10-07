@@ -1,46 +1,65 @@
 package com.todotxt.todotxttouch.task;
 
-import org.junit.Before;
-import org.junit.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MailAddressParserTest {
 
-    private String task;
 
-    private Set<String> expected;
+    @Test
+    public void parseNullMailReturnsEmptyList() {
+        var actual = MailAddressParser.getInstance().parse(null);
 
-    private Set<String> actual;
-
-    @Before
-    public void setUp() {
-        task = null;
-        expected = new HashSet<String>();
-        actual = new HashSet<String>();
+        assertThat(actual).isEmpty();
     }
 
     @Test
-    public void correctParseTest(){
-        task = "newmail@mail.com";
+    public void parseEmptyStringReturnsEmptyList() {
+        var actual = MailAddressParser.getInstance().parse("");
 
-        expected.add("newmail@mail.com");
-        actual.addAll(MailAddressParser.getInstance().parse(task));
-
-        assertEquals(expected, actual);
+        assertThat(actual).isEmpty();
     }
 
     @Test
-    public void incorrectParseTest(){
-        task = "newmail";
+    public void parseValidMailReturnsCorrectSameEmail() {
+        var expected = "newmail@mail.com";
 
-        expected.add("newmail@mail.com");
-        actual.addAll(MailAddressParser.getInstance().parse(task));
+        var actual = MailAddressParser.getInstance().parse(expected);
 
-        assertNotEquals(expected, actual);
+        assertThat(actual).containsExactly(expected);
+    }
+
+    @Test
+    public void parseAllValidEmailsReturnsAllEmails() {
+        var emails = "newmail@mail.com;other@mail.com";
+        var expected = Set.of("newmail@mail.com", "other@mail.com");
+
+        var actual = MailAddressParser.getInstance().parse(emails);
+
+        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @Test
+    public void parseSomeValidEmailsAndOtherInvalidEmailsReturnsOnlyValidEmails() {
+        var emails = "newmail@mail.com;other@mail.com;invalid;yetanotheremail@email.com";
+        var expected = Set.of("newmail@mail.com", "other@mail.com", "yetanotheremail@email.com");
+
+        var actual = MailAddressParser.getInstance().parse(emails);
+
+        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @Test
+    public void invalidMailReturnsEmptyList() {
+        var emails = "invalidEmail;otherinvalidemail;@invalid";
+
+        var actual = MailAddressParser.getInstance().parse(emails);
+
+        assertThat(actual).isEmpty();
     }
 }

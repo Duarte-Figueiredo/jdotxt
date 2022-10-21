@@ -196,3 +196,4 @@ dist/
 build/
 jar/
 osx/
+/.idea/

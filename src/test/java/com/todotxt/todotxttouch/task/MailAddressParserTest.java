@@ -2,7 +2,7 @@ package com.todotxt.todotxttouch.task;
 
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Set;
 

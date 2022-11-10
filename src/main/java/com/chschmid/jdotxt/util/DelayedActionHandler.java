@@ -30,13 +30,6 @@ public class DelayedActionHandler {
 		}
 	}
 	
-	public void close() {
-		synchronized (t) {
-			isRunning = false;
-			t.notify();
-		}
-	}
-	
 	private class DelayRunnable implements Runnable {
 		@Override
 		public void run() {

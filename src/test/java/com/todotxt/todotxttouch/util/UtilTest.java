@@ -3,7 +3,6 @@ package com.todotxt.todotxttouch.util;
 import com.todotxt.todotxttouch.TodoException;
 
 import org.junit.Test;
-import org.mockito.internal.matchers.Null;
 
 import java.io.File;
 import java.util.Collection;
@@ -130,6 +129,22 @@ public class UtilTest {
 
         when(origFile.exists()).thenReturn(true);
         when(newFileParent.exists()).thenReturn(true);
+        when(newFileParent.mkdirs()).thenReturn(false);
+        when(newFile.getParentFile()).thenReturn(newFileParent);
+        assertThrows(TodoException.class, () -> Util.renameFile(origFile, newFile, overwrite));
+    }
+
+    @Test
+    public void renameFile5() {
+        var origFile = mock(File.class);
+        var newFile = mock(File.class);
+        var newFileParent = mock(File.class);
+        var overwrite = true;
+
+        when(origFile.exists()).thenReturn(true);
+        when(newFileParent.exists()).thenReturn(true)
+                                    .thenReturn(false);
+
         when(newFileParent.mkdirs()).thenReturn(false);
         when(newFile.getParentFile()).thenReturn(newFileParent);
         assertThrows(TodoException.class, () -> Util.renameFile(origFile, newFile, overwrite));

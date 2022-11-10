@@ -122,4 +122,43 @@ public class StringsTest {
 
         assertFalse(actual);
     }
+
+    @Test
+    public void strings1() {
+        var strings = new Strings();
+
+        assertThat(strings).isNotNull();
+    }
+
+    @Test
+    public void insertPaddedIfNeeded1() {
+        var s = "";
+        var insertAt = 0;
+        var stringToInsert = "";
+
+        var actual = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+        assertThat(actual).isNotNull();
+    }
+
+    @Test
+    public void insertPaddedIfNeeded2() {
+        var s = "s";
+        var insertAt = 1;
+        var stringToInsert = "s";
+
+        var actual = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+        assertThat(actual).isNotNull();
+    }
+
+    @Test
+    public void insertPaddedIfNeeded3() {
+        var s = "a";
+        var insertAt = 2;
+        var stringToInsert = "s";
+
+        assertThrows(StringIndexOutOfBoundsException.class,
+                     () -> Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert));
+    }
 }

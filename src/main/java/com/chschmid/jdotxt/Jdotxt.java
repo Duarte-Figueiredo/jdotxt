@@ -141,10 +141,7 @@ public class Jdotxt {
 	public static void addFileModifiedListener(FileModifiedListener fileModifiedListener) {
 		fileModifiedWatcher.addFileModifiedListener(fileModifiedListener);
 	}
-	public static void removeFileModifiedListener(FileModifiedListener fileModifiedListener) {
-		fileModifiedWatcher.removeFileModifiedListener(fileModifiedListener);
-	}
-	
+
 	
 	public static void archiveTodos() { 
 		synchronized(fileLock){
@@ -188,12 +185,4 @@ public class Jdotxt {
 	public static void onMacOSX() {
 		// Nothing so far
 	}
-	
-	public static String insertReplaceString(String original, String replace, int offset) {
-		String a =  original.substring(0, Math.min(offset, original.length()));
-		String b;
-		if (original.length() > (offset + replace.length())) b = original.substring(offset + replace.length(), original.length());
-		else b = "";
-		return a + replace + b;
-	  }
 }

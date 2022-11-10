@@ -80,17 +80,7 @@ public class FileModifiedWatcher {
 		t.start();
 	}
 	
-	public synchronized void stopProcessingEvents() {
-		if (!processing) return;
-		processing = false;
-		t.interrupt();
-	    try {
-			t.join();
-		} catch (InterruptedException e) {
-		}
-	}
-	
-	private class Watcher implements Runnable {
+	class Watcher implements Runnable {
 		@Override
 		public void run() {
 			WatchKey key;

@@ -4,13 +4,17 @@ import com.todotxt.todotxttouch.TodoException;
 
 import org.junit.Test;
 
+import java.io.Closeable;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -148,5 +152,86 @@ public class UtilTest {
         when(newFileParent.mkdirs()).thenReturn(false);
         when(newFile.getParentFile()).thenReturn(newFileParent);
         assertThrows(TodoException.class, () -> Util.renameFile(origFile, newFile, overwrite));
+    }
+
+    @Test
+    public void renameFile6() {
+        var origFile = mock(File.class);
+        var newFile = mock(File.class);
+        var newFileParent = mock(File.class);
+        var overwrite = true;
+
+        when(origFile.exists()).thenReturn(true);
+        when(newFile.exists()).thenReturn(true);
+        when(newFile.delete()).thenReturn(true);
+        when(origFile.renameTo(newFile)).thenReturn(true);
+        when(newFileParent.exists()).thenReturn(true);
+
+        when(newFileParent.mkdirs()).thenReturn(false);
+        when(newFile.getParentFile()).thenReturn(newFileParent);
+
+        Util.renameFile(origFile, newFile, overwrite);
+    }
+
+    @Test
+    public void renameFile7() {
+        var origFile = mock(File.class);
+        var newFile = mock(File.class);
+        var newFileParent = mock(File.class);
+        var overwrite = true;
+
+        when(origFile.exists()).thenReturn(true);
+        when(newFileParent.exists()).thenReturn(false);
+        when(newFileParent.mkdirs()).thenReturn(false);
+        when(newFile.getParentFile()).thenReturn(newFileParent);
+        assertThrows(NullPointerException.class, () -> Util.renameFile(origFile, newFile, overwrite));
+    }
+
+    @Test
+    public void closeStream1() {
+        var stream = mock(Closeable.class);
+        Util.closeStream(stream);
+    }
+
+    @Test
+    public void closeStream2() throws IOException {
+        var stream = mock(Closeable.class);
+
+        doThrow(new IOException()).when(stream).close();
+        Util.closeStream(stream);
+    }
+
+    @Test
+    public void isDeviceWritable1() {
+        assertThat(Util.isDeviceWritable()).isTrue();
+    }
+
+    @Test
+    public void prependString1() {
+        var string = "";
+        ArrayList<String> list = new ArrayList(List.of("a", "b"));
+
+        Util.prependString(list, string);
+
+        assertThat(list).hasSize(2);
+    }
+
+    @Test
+    public void integerList2IntArray1() {
+        var list = List.of(1, 2, 3);
+
+        var actual = Util.integerList2IntArray(list);
+
+        assertThat(actual).hasSize(3);
+    }
+
+    //powermockito
+    @Test
+    public void createImageIcon1() {
+        var path = "somePath";
+
+        var actual = Util.createImageIcon(path);
+
+        assertThat(actual).isNull();
     }
 }

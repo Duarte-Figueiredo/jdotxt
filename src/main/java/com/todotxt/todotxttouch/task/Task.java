@@ -167,32 +167,12 @@ public class Task implements Serializable {
 		return contexts;
 	}
 
-	public List<URL> getLinks() {
-		return links;
-	}
-
-	public List<String> getPhoneNumbers() {
-		return phoneNumbers;
-	}
-
 	public List<String> getProjects() {
 		return projects;
 	}
 
-	public List<String> getMailAddresses() {
-		return mailAddresses;
-	}
-
 	public String getPrependedDate() {
 		return prependedDate;
-	}
-
-	public String getRelativeAge() {
-		return relativeAge;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
 	}
 
 	public boolean isCompleted() {
@@ -248,25 +228,8 @@ public class Task implements Serializable {
 		}
 	}
 
-	public void delete() {
-		this.update("");
-	}
-	
 	public String toString() {
 		return inFileFormat();
-	}
-
-	// TODO need a better solution (TaskFormatter?) here
-	public String inScreenFormat() {
-		StringBuilder sb = new StringBuilder();
-		if (this.completed) {
-			sb.append(COMPLETED).append(this.completionDate).append(" ");
-			if (!Strings.isEmptyOrNull(this.prependedDate)) {
-				sb.append(this.prependedDate).append(" ");
-			}
-		}
-		sb.append(this.text);
-		return sb.toString();
 	}
 
 	public String inFileFormat() {
@@ -400,23 +363,5 @@ public class Task implements Serializable {
 				+ ((relativeAge == null) ? 0 : relativeAge.hashCode());
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
-	}
-
-	public void initWithFilters(ArrayList<Priority> prios,
-			ArrayList<String> ctxts, ArrayList<String> pjs) {
-		if ((prios != null) && (prios.size() == 1))
-		{
-			setPriority(prios.get(0));
-		}
-		if ((ctxts != null) && (ctxts.size() == 1))
-		{
-			contexts.clear();
-			contexts.add(ctxts.get(0));
-		}
-		if ((pjs != null) && (pjs.size() == 1))
-		{
-			projects.clear();
-			projects.add(pjs.get(0));
-		}
 	}
 }

@@ -167,33 +167,33 @@ public class Task implements Serializable {
 		return contexts;
 	}
 
-	public List<URL> getLinks() {
-		return links;
-	}
-
-	public List<String> getPhoneNumbers() {
-		return phoneNumbers;
-	}
+//	public List<URL> getLinks() {
+//		return links;
+//	}
+//
+//	public List<String> getPhoneNumbers() {
+//		return phoneNumbers;
+//	}
 
 	public List<String> getProjects() {
 		return projects;
 	}
 
-	public List<String> getMailAddresses() {
-		return mailAddresses;
-	}
+//	public List<String> getMailAddresses() {
+//		return mailAddresses;
+//	}
 
 	public String getPrependedDate() {
 		return prependedDate;
 	}
 
-	public String getRelativeAge() {
-		return relativeAge;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
+//	public String getRelativeAge() {
+//		return relativeAge;
+//	}
+//
+//	public boolean isDeleted() {
+//		return deleted;
+//	}
 
 	public boolean isCompleted() {
 		return completed;

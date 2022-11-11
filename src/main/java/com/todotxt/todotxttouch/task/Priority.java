@@ -57,13 +57,13 @@ public enum Priority {
 		return code;
 	}
 
-	public String inListFormat() {
-		return listFormat;
-	}
-
-	public String inDetailFormat() {
-		return detailFormat;
-	}
+//	public String inListFormat() {
+//		return listFormat;
+//	}
+//
+//	public String inDetailFormat() {
+//		return detailFormat;
+//	}
 
 	public String inFileFormat() {
 		return fileFormat;
@@ -98,30 +98,30 @@ public enum Priority {
 		return priorities;
 	}
 
-	public static List<String> rangeInCode(Priority p1, Priority p2) {
-		List<Priority> priorities = Priority.range(p1, p2);
-		List<String> result = new ArrayList<String>(priorities.size());
-		for (Priority p : priorities) {
-			result.add(p.getCode());
-		}
-		return result;
-	}
-
-	public static ArrayList<String> inCode(Collection<Priority> priorities) {
-		ArrayList<String> strings = new ArrayList<String>();
-		for (Priority p : priorities) {
-			strings.add(p.getCode());
-		}
-		return strings;
-	}
-
-	public static ArrayList<Priority> toPriority(List<String> codes) {
-		ArrayList<Priority> priorities = new ArrayList<Priority>();
-		for (String code : codes) {
-			priorities.add(Priority.toPriority(code));
-		}
-		return priorities;
-	}
+//	public static List<String> rangeInCode(Priority p1, Priority p2) {
+//		List<Priority> priorities = Priority.range(p1, p2);
+//		List<String> result = new ArrayList<String>(priorities.size());
+//		for (Priority p : priorities) {
+//			result.add(p.getCode());
+//		}
+//		return result;
+//	}
+//
+//	public static ArrayList<String> inCode(Collection<Priority> priorities) {
+//		ArrayList<String> strings = new ArrayList<String>();
+//		for (Priority p : priorities) {
+//			strings.add(p.getCode());
+//		}
+//		return strings;
+//	}
+//
+//	public static ArrayList<Priority> toPriority(List<String> codes) {
+//		ArrayList<Priority> priorities = new ArrayList<Priority>();
+//		for (String code : codes) {
+//			priorities.add(Priority.toPriority(code));
+//		}
+//		return priorities;
+//	}
 
 	public static Priority toPriority(String s) {
 		if (s == null) {

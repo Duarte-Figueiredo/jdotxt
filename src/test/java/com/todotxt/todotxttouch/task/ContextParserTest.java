@@ -43,6 +43,14 @@ public class ContextParserTest {
 	}
 
 	@Test
+	public void testNullContext() {
+		task = null;
+		expected = Collections.emptySet();
+		actual.addAll(ContextParser.getInstance().parse(task));
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	public void testAsciiContexts() {
 		task = "Buy flour, eggs and milk @supermarket12 @inthecity";
 		expected.addAll(Arrays.asList(

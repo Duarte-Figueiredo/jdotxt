@@ -34,16 +34,6 @@ public class ByContextFilterTest {
         assertTrue(byContextFilter.apply(input));
     }
 
-    //TODO: Verificar a passagem pelo FOR
-//    @Test
-//    public void testApply2() {
-//        var contexts = new ArrayList<String>();
-//        var input = mock(Task.class);
-//        contexts.add(input.getText());
-//        var byContextFilter = new ByContextFilter(contexts);
-//        assertTrue(byContextFilter.apply(input));
-//    }
-
     @Test
     public void testApply3() {
         var contexts = new ArrayList<String>();

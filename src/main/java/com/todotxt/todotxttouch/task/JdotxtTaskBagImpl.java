@@ -236,6 +236,7 @@ class JdotxtTaskBagImpl implements TaskBag {
 		return ret;
 	}
 
+	//Assignment 8
 	@Override
 	public ArrayList<String> getProjects(boolean includeNone) {
 		// TODO cache this after reloads?

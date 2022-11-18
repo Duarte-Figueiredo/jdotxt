@@ -19,11 +19,4 @@ public class HiddenFilterTest {
         var task = new Task();
         assertTrue(hiddenFilter.apply(task));
     }
-
-    //TODO: apply com result false
-//    @Test
-//    public void testApply2() {
-//        var task = new Task();
-//        assertTrue(hiddenFilter.apply(task));
-//    }
 }

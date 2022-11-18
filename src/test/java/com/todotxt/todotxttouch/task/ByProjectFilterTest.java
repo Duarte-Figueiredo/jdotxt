@@ -34,16 +34,6 @@ public class ByProjectFilterTest {
         assertTrue(byProjectFilter.apply(input));
     }
 
-    //TODO: Verificar a passagem pelo FOR
-//    @Test
-//    public void testApply2() {
-//        var input = mock(Task.class);
-//        var projects = new ArrayList<String>();
-//        projects.add("-");
-//        var byProjectFilter = new ByProjectFilter(projects);
-//        assertFalse(byProjectFilter.apply(input));
-//    }
-
     @Test
     public void testApply3() {
         var input = mock(Task.class);

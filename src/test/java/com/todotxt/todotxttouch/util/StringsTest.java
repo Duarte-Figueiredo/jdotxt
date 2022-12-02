@@ -80,7 +80,7 @@ public class StringsTest {
         var exception = assertThrows(IndexOutOfBoundsException.class,
                                      () -> Strings.insertPadded(S, insertAt, STRING_TO_INSERT));
 
-        assertThat(exception).hasMessage("begin 0, end 7, length 6");
+        assertThat(exception).hasMessage("Range [0, 7) out of bounds for length 6");
     }
 
     @Test

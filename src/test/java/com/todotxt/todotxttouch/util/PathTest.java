@@ -54,16 +54,6 @@ public class PathTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-//    @Test
-//    void invalidPathReturnsFullPath() {
-//        var path = "\\some\\path\\somefilename";
-//        var expected = "somefilename";
-//
-//        var actual = Path.fileName(path);
-//
-//        assertThat(actual).isEqualTo(expected);
-//    }
-
     @Test
     public void nullPathReturnsEmpty() {
         String s = null;
@@ -105,4 +95,33 @@ public class PathTest {
 
         assertEquals(result, expected);
     }
+
+    @Test
+    public void filePath1() {
+        String s = "TestingPath/NewPath/";
+        String expected = "NewPath";
+        String result = Path.fileName(s);
+
+        assertEquals(result, expected);
+    }
+
+    @Test
+    public void filePath3() {
+        String s = "TestingPath/NewPath";
+        String expected = "NewPath";
+        String result = Path.fileName(s);
+
+        assertEquals(result, expected);
+    }
+
+    @Test
+    public void filePath4() {
+        String s = "";
+        String expected = "";
+        String result = Path.fileName(s);
+
+        assertEquals(result, expected);
+    }
+
+
 }

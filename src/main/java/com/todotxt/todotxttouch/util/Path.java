@@ -37,8 +37,6 @@ public class Path {
 		return "";
 	}
 
-
-	//Assignment 8
 	public static String parentPath(String path) {
 		// adapted from DropboxAPI.java v1.5.4
 		if (Strings.isBlank(path) || path.equals("/")) {

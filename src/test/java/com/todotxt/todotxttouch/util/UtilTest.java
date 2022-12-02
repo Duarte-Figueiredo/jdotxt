@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -225,13 +226,19 @@ public class UtilTest {
         assertThat(actual).hasSize(3);
     }
 
-    //powermockito
     @Test
     public void createImageIcon1() {
-        var path = "somePath";
-
+        var path = "someNotExistingPath";
         var actual = Util.createImageIcon(path);
 
         assertThat(actual).isNull();
+    }
+
+    @Test
+    public void createImageIcon2() {
+        var path = "/drawable/testImageIcon.png";
+        var actual = Util.createImageIcon(path);
+
+        assertThat(actual).isNotNull();
     }
 }

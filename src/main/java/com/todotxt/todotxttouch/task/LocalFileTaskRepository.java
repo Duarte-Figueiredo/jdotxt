@@ -139,7 +139,6 @@ public class LocalFileTaskRepository implements LocalTaskRepository {
 		Util.renameFile(file, DONE_TXT_FILE, true);
 	}
 
-	//Assignment 8
 	@Override
 	public boolean todoFileModifiedSince(Date date) {
 		long date_ms = 0l;

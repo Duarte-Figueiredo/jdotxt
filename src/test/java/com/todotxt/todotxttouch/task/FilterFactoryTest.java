@@ -12,21 +12,21 @@ import static org.mockito.Mockito.mock;
 public class FilterFactoryTest {
 
     private FilterFactory filterFactory = new FilterFactory();
-    @Test
-    public void testGenerateAndFilters1() {
-        List<Priority> priorities = new ArrayList<>();
-        List<String> contexts = new ArrayList<>();
-        List<String> projects = new ArrayList<>();
-        String text = null;
-        boolean caseSensitive = true;
-        boolean showHidden = true;
-        boolean showThreshold = true;
-
-        var result = filterFactory.generateAndFilter(priorities, contexts,
-               projects, text, caseSensitive, showHidden, showThreshold);
-
-        assertEquals(0, result.getClass().getFields().length);
-    }
+//    @Test
+//    public void testGenerateAndFilters1() {
+//        List<Priority> priorities = new ArrayList<>();
+//        List<String> contexts = new ArrayList<>();
+//        List<String> projects = new ArrayList<>();
+//        String text = null;
+//        boolean caseSensitive = true;
+//        boolean showHidden = true;
+//        boolean showThreshold = true;
+//
+//        var result = filterFactory.generateAndFilter(priorities, contexts,
+//               projects, text, caseSensitive, showHidden, showThreshold);
+//
+//        assertEquals(0, result.getClass().getFields().length);
+//    }
 
     @Test
     public void testGenerateAndFilters2() {

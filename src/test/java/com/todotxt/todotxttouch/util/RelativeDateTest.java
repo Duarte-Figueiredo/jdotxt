@@ -83,7 +83,7 @@ public class RelativeDateTest {
                      () -> RelativeDate.getRelativeDate(calendar));
     }
 
-    @Test //Powermockito
+    @Test
     public void getRelativeDate6() {
         var calendar = mock(Calendar.class);
 
